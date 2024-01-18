@@ -95,6 +95,21 @@ int pop(int line_no)
 }
 
 /**
+ * pint - prints the value at the top of the stack
+ *
+ * Return: void
+ */
+void pint(int line_no)
+{
+	if (top == NULL)
+	{
+		dprintf(2, "L%d: can't pint, stack empty\n", line_no);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", top->n);
+}
+
+/**
  * free_stack - Frees memory alloc'd to stack
  *
  * Return: void
