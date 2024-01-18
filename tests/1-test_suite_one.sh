@@ -34,6 +34,7 @@ rm test4.m
 
 # Test Case 5: Push, pop, and print (verify pop functionality)
 echo "push 42" > test5.m
+echo "push 57" >>test5.m
 echo "pop" >> test5.m
 echo "pall" >> test5.m
 run_test test5.m

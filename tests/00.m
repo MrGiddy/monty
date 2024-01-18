@@ -7,6 +7,7 @@ push 2
                   pall     
 push 4
     push 5    
+    pop    
       push    6
 
 pall

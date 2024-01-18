@@ -50,8 +50,7 @@ void pall(void)
 	current = top;
 	if (current == NULL)
 	{
-		dprintf(2, "%s\n", "Stack underflow");
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 	}
 
 	while (current != NULL)
@@ -59,6 +58,40 @@ void pall(void)
 		printf("%d\n", current->n);
 		current = current->next;
 	}
+}
+
+/**
+ * pop - removes the top element of the stack
+ * @line_no: The line containing pop command
+ *
+ * Return: The element popped
+ */
+int pop(int line_no)
+{
+	stack_t *current;
+	int data;
+
+	if (top == NULL)
+	{
+		dprintf(2, "L%d: can't pop an empty stack\n", line_no);
+		exit(EXIT_FAILURE);
+	}
+
+	current = top;
+	data = current->n;
+
+	if (top->next == NULL)
+	{
+		top = NULL;
+	}
+	else
+	{
+		top = top->next;
+		top->prev = NULL;
+	}
+
+	free(current);
+	return (data);
 }
 
 /**
