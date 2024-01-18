@@ -24,7 +24,7 @@ int main(int ac, char **argv)
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
-		dprintf(2, "%s %s\n", "Error: Can't open file ", argv[1]);
+		dprintf(2, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
