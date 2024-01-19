@@ -47,6 +47,7 @@ void match_command(char **argv, int line_no)
 /**
  * atoi_and_push - parses a string to an integer
  * @str: The string to parse
+ * @line_no: The line number containing push command
  *
  * Return: void
  */
