@@ -31,3 +31,25 @@ void nop(void)
 {
 
 }
+
+/**
+ * sub - subtracts top element from second top element of the stack
+ * @line_no: The line number contaning the sub command
+ *
+ * Return: void
+ */
+void sub(int line_no)
+{
+	int n, data, data1;
+
+	if (top == NULL || top->next == NULL)
+	{
+		dprintf(2, "L%d: can't sub, stack too short\n", line_no);
+		exit(EXIT_FAILURE);
+	}
+
+	data = pop(-1);
+	data1 = pop(-1);
+	n = data1 - data;
+	push(n);
+}
