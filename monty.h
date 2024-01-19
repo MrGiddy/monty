@@ -50,5 +50,6 @@ void free_stack(void);
 int pop(int line_no);
 void pint(int line_no);
 void swap(int line_no);
+void add(int line_no);
 
 #endif /* MONTY_H */
