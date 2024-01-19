@@ -32,7 +32,7 @@ int main(int ac, char **argv)
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
 		line_no++;
-		if (line[0] == '\n' || line[0] == '\0')
+		if (line[0] == '\n' || line[0] == '\0' || is_empty_line(line))
 			continue;
 		av = parse_line(line);
 		match_command(av, line_no);

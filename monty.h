@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <limits.h>
+#include <errno.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -52,5 +54,7 @@ void pint(int line_no);
 void swap(int line_no);
 void add(int line_no);
 void nop(void);
+void atoi_and_push(char *str, int line_no);
+int is_empty_line(char *line);
 
 #endif /* MONTY_H */
