@@ -49,5 +49,6 @@ int count_string_tokens(const char *line);
 void free_stack(void);
 int pop(int line_no);
 void pint(int line_no);
+void swap(int line_no);
 
 #endif /* MONTY_H */

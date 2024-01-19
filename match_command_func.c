@@ -30,6 +30,10 @@ void match_command(char **argv, int line_no)
 	{
 		pint(line_no);
 	}
+	else if (strcmp(argv[0], "swap") == 0)
+	{
+		swap(line_no);
+	}
 	else
 	{
 		dprintf(2, "L%d: unknown instruction %s\n", line_no, argv[0]);

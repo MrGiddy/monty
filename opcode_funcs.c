@@ -48,11 +48,6 @@ void pall(void)
 	stack_t *current;
 
 	current = top;
-	if (current == NULL)
-	{
-		exit(EXIT_SUCCESS);
-	}
-
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
@@ -96,6 +91,7 @@ int pop(int line_no)
 
 /**
  * pint - prints the value at the top of the stack
+ * @line_no: The line with the pint command
  *
  * Return: void
  */
@@ -110,18 +106,31 @@ void pint(int line_no)
 }
 
 /**
- * free_stack - Frees memory alloc'd to stack
+ * swap - swaps the top two elements of the stack
+ * @line_no: The line with the swap command
  *
  * Return: void
  */
-void free_stack(void)
+void swap(int line_no)
 {
-	stack_t *current;
+	stack_t *first, *second;
 
-	while (top != NULL)
+	if (top == NULL || top->next == NULL)
 	{
-		current = top;
-		top = top->next;
-		free(current);
+		dprintf(2, "L%d: can't swap, stack too short\n", line_no);
+		exit(EXIT_FAILURE);
 	}
+
+	first = top;
+	second = top->next;
+
+	if (second->next != NULL)
+		second->next->prev = first;
+
+	first->next = second->next;
+	second->prev = NULL;
+
+	second->next = first;
+	first->prev = second;
+	top = second;
 }
