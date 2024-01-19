@@ -57,5 +57,6 @@ void nop(void);
 void atoi_and_push(char *str, int line_no);
 int is_empty_line(char *line);
 void sub(int line_no);
+void divide(int line_no);
 
 #endif /* MONTY_H */

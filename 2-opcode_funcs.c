@@ -53,3 +53,32 @@ void sub(int line_no)
 	n = data1 - data;
 	push(n);
 }
+
+/**
+ * div - Implement the div opcode
+ * @line_no: The line number containing the div command
+ *
+ * Return: void
+ */
+void divide(int line_no)
+{
+	int data, data1;
+	float n;
+
+	if (top == NULL || top->next == NULL)
+	{
+		dprintf(2, "L%d: can't div, stack too short\n", line_no);
+		exit(EXIT_FAILURE);
+	}
+
+	data = pop(-1);
+	if (data == 0)
+	{
+		dprintf(2, "L%d: division by zero\n", line_no);
+		exit(EXIT_FAILURE);
+	}
+		
+	data1 = pop(-1);
+	n = data1 / data;
+	push((int)n);
+}

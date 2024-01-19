@@ -41,6 +41,10 @@ void match_command(char **argv, int line_no)
 	{
 		sub(line_no);
 	}
+	else if (strcmp(argv[0], "div") == 0)
+	{
+		divide(line_no);
+	}
 	else
 	{
 		dprintf(2, "L%d: unknown instruction %s\n", line_no, argv[0]);
