@@ -12,7 +12,7 @@ void add(int line_no)
 
 	if (top == NULL || top->next == NULL)
 	{
-		dprintf(2, "L%d: can't add, stack too short", line_no);
+		dprintf(2, "L%d: can't add, stack too short\n", line_no);
 		exit(EXIT_FAILURE);
 	}
 
