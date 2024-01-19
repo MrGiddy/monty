@@ -38,6 +38,10 @@ void match_command(char **argv, int line_no)
 	{
 		add(line_no);
 	}
+	else if (strcmp(argv[0], "nop") == 0)
+	{
+		nop();
+	}
 	else
 	{
 		dprintf(2, "L%d: unknown instruction %s\n", line_no, argv[0]);

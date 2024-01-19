@@ -156,3 +156,13 @@ void add(int line_no)
 	n = data + data1;
 	push(n);
 }
+
+/**
+ * nop - doesn't do anything
+ *
+ * Return: void
+ */
+void nop(void)
+{
+
+}

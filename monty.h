@@ -51,5 +51,6 @@ int pop(int line_no);
 void pint(int line_no);
 void swap(int line_no);
 void add(int line_no);
+void nop(void);
 
 #endif /* MONTY_H */
