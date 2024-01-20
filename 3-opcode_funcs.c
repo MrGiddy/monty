@@ -46,7 +46,7 @@ void pchar(stack_t **stack, unsigned int line_no)
 		exit(EXIT_FAILURE);
 	}
 
-	data = pop(stack, line_no);
+	data = (*stack)->n;
 	if (data < 0 || data > 127)
 	{
 		dprintf(2, "L%d: can't pchar, value out of range\n", line_no);
