@@ -32,7 +32,7 @@ char **parse_line(const char *line)
 		argv[i] = strdup(tok);
 		if (argv[i] == NULL)
 		{
-			free_argv(argv, i);
+			free_failed_argv(argv, i);
 			dprintf(2, "%s\n", "Error: malloc failed");
 			exit(EXIT_FAILURE);
 		}
@@ -45,13 +45,13 @@ char **parse_line(const char *line)
 }
 
 /**
- * free_argv - Free array of strings if malloc fails
+ * free_failed_argv - Free array of strings if malloc fails
  * @argv: Argument vector
  * @i: Index of argv element at point of malloc failure
  *
  * Return: void
  */
-void free_argv(char **argv, int i)
+void free_failed_argv(char **argv, int i)
 {
 	int j;
 

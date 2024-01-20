@@ -1,5 +1,7 @@
 #include "monty.h"
 
+stack_t *stack = NULL;
+
 /**
  * main - Check the code
  * @ac: Argument count
@@ -14,6 +16,7 @@ int main(int ac, char **argv)
 	char **av;
 	int line_no;
 	int i;
+
 
 	if (ac == 1 || ac > 2)
 	{
@@ -35,7 +38,7 @@ int main(int ac, char **argv)
 		if (line[0] == '\n' || line[0] == '\0' || is_empty_line(line))
 			continue;
 		av = parse_line(line);
-		match_command(av, line_no);
+		match_command(&stack, line_no, av);
 
 		for (i = 0; av[i] != NULL; i++)
 		{
@@ -45,7 +48,7 @@ int main(int ac, char **argv)
 	}
 
 	fclose(file);
-	free_stack();
+	free_stack(&stack);
 
 	return (0);
 }

@@ -1,9 +1,9 @@
 #include "monty.h"
 
-stack_t *top = NULL;
-
 /**
  * push - pushes an element to the stack
+ * @stack: Pointer to a pointer to the first element of the stack
+ * @line_no: Line number contiaing the pall command
  * @n: Data for tne node
  *
  * Description:
@@ -11,9 +11,11 @@ stack_t *top = NULL;
  * linked list implementation of the stack
  * Return: void
  */
-void push(int n)
+void push(stack_t **stack, unsigned int line_no, int n)
 {
 	stack_t *new_node;
+
+	UNUSED(line_no);
 
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
@@ -26,28 +28,32 @@ void push(int n)
 	new_node->prev = NULL;
 	new_node->next = NULL;
 
-	if (top == NULL)
+	if (*stack == NULL)
 	{
-		top = new_node;
+		*stack = new_node;
 	}
 	else
 	{
-		top->prev = new_node;
-		new_node->next = top;
-		top = new_node;
+		(*stack)->prev = new_node;
+		new_node->next = *stack;
+		*stack = new_node;
 	}
 }
 
 /**
  * pall - prints all values of the stack starting from tos
+ * @stack: Pointer to a pointer to the first element of the stack
+ * @line_no: Line number contiaing the pall command
  *
  * Return: void
  */
-void pall(void)
+void pall(stack_t **stack, unsigned int line_no)
 {
 	stack_t *current;
 
-	current = top;
+	UNUSED(line_no);
+
+	current = *stack;
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
@@ -57,32 +63,33 @@ void pall(void)
 
 /**
  * pop - removes the top element of the stack
+ * @stack: Pointer to a pointer to the first element of the stack
  * @line_no: The line containing pop command
  *
  * Return: The element popped
  */
-int pop(int line_no)
+int pop(stack_t **stack, unsigned int line_no)
 {
 	stack_t *current;
 	int data;
 
-	if (top == NULL)
+	if (*stack == NULL)
 	{
 		dprintf(2, "L%d: can't pop an empty stack\n", line_no);
 		exit(EXIT_FAILURE);
 	}
 
-	current = top;
+	current = *stack;
 	data = current->n;
 
-	if (top->next == NULL)
+	if ((*stack)->next == NULL)
 	{
-		top = NULL;
+		(*stack) = NULL;
 	}
 	else
 	{
-		top = top->next;
-		top->prev = NULL;
+		*stack = (*stack)->next;
+		(*stack)->prev = NULL;
 	}
 
 	free(current);
@@ -91,38 +98,40 @@ int pop(int line_no)
 
 /**
  * pint - prints the value at the top of the stack
+ * @stack: Pointer to a pointer to the first element of the stack
  * @line_no: The line with the pint command
  *
  * Return: void
  */
-void pint(int line_no)
+void pint(stack_t **stack, unsigned int line_no)
 {
-	if (top == NULL)
+	if (*stack == NULL)
 	{
 		dprintf(2, "L%d: can't pint, stack empty\n", line_no);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", top->n);
+	printf("%d\n", (*stack)->n);
 }
 
 /**
  * swap - swaps the top two elements of the stack
+ * @stack: Pointer to a pointer to the first element of the stack
  * @line_no: The line with the swap command
  *
  * Return: void
  */
-void swap(int line_no)
+void swap(stack_t **stack, unsigned int line_no)
 {
 	stack_t *first, *second;
 
-	if (top == NULL || top->next == NULL)
+	if ((*stack) == NULL || (*stack)->next == NULL)
 	{
 		dprintf(2, "L%d: can't swap, stack too short\n", line_no);
 		exit(EXIT_FAILURE);
 	}
 
-	first = top;
-	second = top->next;
+	first = *stack;
+	second = (*stack)->next;
 
 	if (second->next != NULL)
 		second->next->prev = first;
@@ -132,5 +141,5 @@ void swap(int line_no)
 
 	second->next = first;
 	first->prev = second;
-	top = second;
+	*stack = second;
 }
