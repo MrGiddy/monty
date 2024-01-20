@@ -19,8 +19,8 @@ void match_command(stack_t **stack, unsigned int line_no, char **argv)
 		{"nop", nop},	{"sub", sub},
 		{"div", divide}, {"mul", mul},
 		{"mod", mod},	{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl}, {NULL, NULL},
+		{"pstr", pstr},	{"rotl", rotl},
+		{"rotr", rotr},	{NULL, NULL},
 	}; /* prototype: void (*f)(stack_t **, int) */
 
 	opcode = argv[0];

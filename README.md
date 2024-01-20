@@ -444,3 +444,14 @@ julien@ubuntu:~/monty$ ./monty bytecodes/35.m
 0
 julien@ubuntu:~/monty$ 
 ```
+
+### 14. rotr
+Implement the rotr opcode.
+
+**The rotr opcode**
+
+The opcode rotr rotates the stack to the bottom.
+
+* Usage: rotr
+* The last element of the stack becomes the top element of the stack
+* rotr never fails

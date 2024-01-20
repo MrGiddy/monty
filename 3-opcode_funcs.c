@@ -93,9 +93,12 @@ void pstr(stack_t **stack, unsigned int line_no)
 }
 
 /**
- * rotl - rotates the stack to the top
+ * rotl - Rotates the stack to the top
  * @stack: Pointer to a pointer to first node of a stack_t doubly linked list
  * @line_no: The line number containing the rotl opcode
+ *
+ * Description: The first element of the stack becomes the last element of
+ * the stack
  *
  * Return: void
  */
@@ -121,4 +124,37 @@ void rotl(stack_t **stack, unsigned int line_no)
 	(*stack)->next = NULL;
 	temp2->prev = NULL;
 	*stack = temp2;
+}
+
+/**
+ * rotr - Rotates the stack to the bottom
+ * @stack: Pointer to a pointer to first node of a stack_t doubly linked list
+ * @line_no: The line number containing the rotl opcode
+ *
+ * Description: The last element of the stack becomes the first element of
+ * the stack
+ *
+ * Return: void
+ */
+void rotr(stack_t **stack, unsigned int line_no)
+{
+	stack_t *temp;
+
+	UNUSED(line_no);
+
+	if (*stack == NULL || (*stack)->next == NULL)
+		return;
+
+	temp = *stack;
+
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+
+	temp->next = *stack;
+	temp->prev->next = NULL;
+	(*stack)->prev = temp;
+	temp->prev = NULL;
+	*stack = temp;
 }
