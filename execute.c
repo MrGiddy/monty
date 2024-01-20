@@ -14,17 +14,12 @@ void match_command(stack_t **stack, unsigned int line_no, char **argv)
 	size_t i;
 
 	instruction_t array[] = {
-		{"pall", pall},
-		{"pint", pint},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
-		{"div", divide},
-		{"mul", mul},
-		{"mod", mod},
-		{"pchar", pchar},
-		{NULL, NULL},
+		{"pall", pall},	{"pint", pint},
+		{"swap", swap},	{"add", add},
+		{"nop", nop},	{"sub", sub},
+		{"div", divide}, {"mul", mul},
+		{"mod", mod},	{"pchar", pchar},
+		{"pstr", pstr},	{NULL, NULL},
 	}; /* prototype: void (*f)(stack_t **, int) */
 
 	opcode = argv[0];

@@ -54,3 +54,40 @@ void pchar(stack_t **stack, unsigned int line_no)
 	}
 	printf("%c\n", data);
 }
+
+/**
+ * pstr - Prints the string starting at TOS
+ * @stack: Pointer to  pointer to first node of a stack_t doubly linked list
+ * @line_no: The line number containing the pstr opcode
+ *
+ * Return: void
+ */
+void pstr(stack_t **stack, unsigned int line_no)
+{
+	stack_t *current;
+
+	UNUSED(line_no);
+
+	if (*stack == NULL)
+	{
+		putchar('\n');
+		return;
+	}
+
+	current = *stack;
+
+	while (current != NULL)
+	{
+		/* break if 0 is encountered */
+		if (current->n == 0)
+			break;
+
+		/* break if ascii value is out of range */
+		if (current->n < 0 || current->n > 127)
+			break;
+
+		printf("%c", current->n);
+		current = current->next;
+	}
+	putchar('\n');
+}
