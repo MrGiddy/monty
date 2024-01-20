@@ -91,3 +91,34 @@ void pstr(stack_t **stack, unsigned int line_no)
 	}
 	putchar('\n');
 }
+
+/**
+ * rotl - rotates the stack to the top
+ * @stack: Pointer to a pointer to first node of a stack_t doubly linked list
+ * @line_no: The line number containing the rotl opcode
+ *
+ * Return: void
+ */
+void rotl(stack_t **stack, unsigned int line_no)
+{
+	stack_t *temp, *temp2;
+
+	UNUSED(line_no);
+
+	if (*stack == NULL || (*stack)->next == NULL)
+		return;
+
+	temp = *stack;
+
+	while (temp->next != NULL)
+	{
+		temp = temp->next;
+	}
+
+	temp->next = *stack;
+	(*stack)->prev = temp;
+	temp2 = (*stack)->next;
+	(*stack)->next = NULL;
+	temp2->prev = NULL;
+	*stack = temp2;
+}
