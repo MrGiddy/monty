@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * match_command - matches command with appropriate function
+ * match_command - Calls functions for opcodes that match
  * @stack: Pointer to a pointer to the first node of stack_t doubly linked list
  * @line_no: The line number of the opcode instruction to be executed
  * @argv: An array of strings: argv[0] is opcode and argv[1] is argument
@@ -23,6 +23,7 @@ void match_command(stack_t **stack, unsigned int line_no, char **argv)
 		{"div", divide},
 		{"mul", mul},
 		{"mod", mod},
+		{"pchar", pchar},
 		{NULL, NULL},
 	}; /* prototype: void (*f)(stack_t **, int) */
 

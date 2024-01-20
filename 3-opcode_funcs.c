@@ -28,3 +28,29 @@ void mod(stack_t **stack, unsigned int line_no)
 	n = data1 % data;
 	push(stack, line_no, n);
 }
+
+/**
+ * pchar - Prints the char at the top of the stack, followed by a new line
+ * @stack: Pointer to a pointer to first node of a stack_t doubly linked list
+ * @line_no: The line number containing the pchar opcode
+ *
+ * Return: void
+ */
+void pchar(stack_t **stack, unsigned int line_no)
+{
+	int data;
+
+	if (*stack == NULL)
+	{
+		dprintf(2, "L%d: can't pchar, stack empty\n", line_no);
+		exit(EXIT_FAILURE);
+	}
+
+	data = pop(stack, line_no);
+	if (data < 0 || data > 127)
+	{
+		dprintf(2, "L%d: can't pchar, value out of range\n", line_no);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", data);
+}
