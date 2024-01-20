@@ -22,6 +22,7 @@ void match_command(stack_t **stack, unsigned int line_no, char **argv)
 		{"sub", sub},
 		{"div", divide},
 		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL},
 	}; /* prototype: void (*f)(stack_t **, int) */
 
