@@ -35,7 +35,7 @@ int main(int ac, char **argv)
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
 		line_no++;
-		if (line[0] == '\n' || line[0] == '\0' || is_empty_line(line))
+		if (line[0] == '\0' || is_empty(line) || if_comment(line))
 			continue;
 		av = parse_line(line);
 		match_command(&stack, line_no, av);

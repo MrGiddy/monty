@@ -55,7 +55,8 @@ void match_command(stack_t **stack, unsigned int line_no, char **argv);
 /* helper_funcs.c */
 void free_stack(stack_t **stack);
 void atoi_and_push(stack_t **stack, unsigned int line_no, char *str);
-int is_empty_line(char *line);
+int is_empty(char *line);
+int if_comment(char *line);
 
 /* 1-opcode_funcs.c */
 void push(stack_t **stack, unsigned int line_no, int n);

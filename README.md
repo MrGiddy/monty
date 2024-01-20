@@ -118,7 +118,7 @@ julien@ubuntu:~/monty$
 * If, for any reason, it’s not possible to open the file, print the error message Error: Can't open file \<file\>, followed by a new line, and exit with the status EXIT_FAILURE
     * where \<file\> is the name of the file
 * If the file contains an invalid instruction, print the error message L\<line_number\>: unknown instruction \<opcode\>, followed by a new line, and exit with the status EXIT_FAILURE
-    * where <L> is the line number where the instruction appears.
+    * where \<L\> is the line number where the instruction appears.
     * Line numbers always start at 1
 * The monty program runs the bytecodes line by line and stop if either:
     * it executed properly every line of the file
@@ -232,7 +232,7 @@ julien@ubuntu:~/monty$ ./monty bytecodes/09.m
 julien@ubuntu:~/monty$ 
 ```
 
-### 4.add
+### 4. add
 Implement the add opcode.
 
 **The add opcode**
@@ -338,3 +338,6 @@ The opcode mod computes the rest of the division of the second top element of th
     * The top element of the stack contains the result
     * The stack is one element shorter
 * If the top element of the stack is 0, print the error message L\<line_number\>: division by zero, followed by a new line, and exit with the status EXIT_FAILURE
+
+### 9. comments
+Every good language comes with the capability of commenting. When the first non-space character of a line is #, treat this line as a comment (don’t do anything).

@@ -41,12 +41,12 @@ void atoi_and_push(stack_t **stack, unsigned int line_no, char *str)
 }
 
 /**
- * is_empty_line - Checks if a line is empty
+ * is_empty - Checks if a line is empty
  * @line: Line to check
  *
  * Return: 1 if is empty 0 if not
  */
-int is_empty_line(char *line)
+int is_empty(char *line)
 {
 	int i, is_empty;
 
@@ -54,6 +54,7 @@ int is_empty_line(char *line)
 
 	for (i = 0; line[i] != '\0'; i++)
 	{
+		/* If current character is not a space */
 		if (!isspace((unsigned char)line[i]))
 		{
 			is_empty = 0;
@@ -62,6 +63,35 @@ int is_empty_line(char *line)
 	}
 
 	return (is_empty);
+}
+
+/**
+ * if_comment - checks if there is a comment in a line
+ * @line: The line to check
+ *
+ * Return: 1 if true, 0 if false
+ */
+int if_comment(char *line)
+{
+	int i, comment;
+
+	comment = 0;
+
+	for (i = 0; line[i] != '\0'; i++)
+	{
+		/* If current character is not a space */
+		if (!isspace((unsigned char)line[i]))
+		{
+			/* If the character is a # */
+			if (line[i] == '#')
+			{
+				comment = 1;
+				break;
+			}
+			break;
+		}
+	}
+	return (comment);
 }
 
 /**
