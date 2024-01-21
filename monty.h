@@ -29,6 +29,7 @@ typedef struct stack_s
 } stack_t;
 
 extern stack_t *stack;
+extern size_t glob_mode; /* 0: stack mode, 1: queue mode */
 
 /** 
  * struct instruction_s - opcode and its function
@@ -50,7 +51,7 @@ int count_string_tokens(const char *line);
 void free_failed_argv(char **argv, int i);
 
 /* match_command_func.c */
-void match_command(stack_t **stack, unsigned int line_no, char **argv);
+void match_opcode(stack_t **stack, unsigned int line_no, char **argv);
 
 /* helper_funcs.c */
 void free_stack(stack_t **stack);
@@ -78,5 +79,9 @@ void pchar(stack_t **stack, unsigned int line_no);
 void pstr(stack_t **stack, unsigned int line_no);
 void rotl(stack_t **stack, unsigned int line_no);
 void rotr(stack_t **stack, unsigned int line_no);
+
+/* 4-opcode_funcs.c */
+void _stack(stack_t **stack, unsigned int line_no);
+void queue(stack_t **stack, unsigned int line_no);
 
 #endif /* MONTY_H */

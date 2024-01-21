@@ -8,7 +8,7 @@
  *
  * Return: void
  */
-void match_command(stack_t **stack, unsigned int line_no, char **argv)
+void match_opcode(stack_t **stack, unsigned int line_no, char **argv)
 {
 	char *opcode;
 	size_t i;
@@ -20,8 +20,9 @@ void match_command(stack_t **stack, unsigned int line_no, char **argv)
 		{"div", divide}, {"mul", mul},
 		{"mod", mod},	{"pchar", pchar},
 		{"pstr", pstr},	{"rotl", rotl},
-		{"rotr", rotr},	{NULL, NULL},
-	}; /* prototype: void (*f)(stack_t **, int) */
+		{"rotr", rotr},	{"stack", _stack},
+		{"queue", queue}, {NULL, NULL},
+	}; /* prototype: void (*f)(stack_t **, unsigned int) */
 
 	opcode = argv[0];
 
@@ -31,7 +32,7 @@ void match_command(stack_t **stack, unsigned int line_no, char **argv)
 	}
 	else if (strcmp(opcode, "pop") == 0)
 	{
-		pop(stack, line_no); /* prototype: int pop(stack_t, int) */
+		pop(stack, line_no); /* prot: int pop(stack_t, unsigned int) */
 	}
 	else
 	{

@@ -13,7 +13,7 @@
  */
 void push(stack_t **stack, unsigned int line_no, int n)
 {
-	stack_t *new_node;
+	stack_t *new_node, *temp;
 
 	UNUSED(line_no);
 
@@ -34,9 +34,25 @@ void push(stack_t **stack, unsigned int line_no, int n)
 	}
 	else
 	{
-		(*stack)->prev = new_node;
-		new_node->next = *stack;
-		*stack = new_node;
+		/* If stack mode: insert node at beginning */
+		if (glob_mode == 0)
+		{
+			(*stack)->prev = new_node;
+			new_node->next = *stack;
+			*stack = new_node;
+		}
+		/* If queue mode, insert node at the end */
+		else if (glob_mode == 1)
+		{
+			temp = *stack;
+			while (temp->next != NULL)
+			{
+				temp = temp->next;
+			}
+
+			temp->next = new_node;
+			new_node->prev = temp;
+		}
 	}
 }
 

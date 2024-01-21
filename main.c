@@ -1,6 +1,19 @@
 #include "monty.h"
 
-stack_t *stack = NULL;
+size_t glob_mode;
+
+/**
+ * init_stack - initializes stack in stack mode
+ * @stack: Pointer to a pointer to first node of a stack_t doubly linked list
+ * @glob_mode: 0: stack mode, 1: queue mode
+ *
+ * Return: void
+ */
+void init_stack(stack_t **stack)
+{
+	*stack = NULL;
+	glob_mode = 0;
+}
 
 /**
  * main - Check the code
@@ -17,6 +30,9 @@ int main(int ac, char **argv)
 	int line_no;
 	int i;
 
+	stack_t *stack;
+
+	init_stack(&stack);
 
 	if (ac == 1 || ac > 2)
 	{
@@ -38,7 +54,7 @@ int main(int ac, char **argv)
 		if (line[0] == '\0' || is_empty(line) || if_comment(line))
 			continue;
 		av = parse_line(line);
-		match_command(&stack, line_no, av);
+		match_opcode(&stack, line_no, av);
 
 		for (i = 0; av[i] != NULL; i++)
 		{
