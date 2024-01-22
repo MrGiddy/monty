@@ -5,7 +5,8 @@ size_t glob_mode;
 /**
  * init_stack - initializes stack in stack mode
  * @stack: Pointer to a pointer to first node of a stack_t doubly linked list
- * @glob_mode: 0: stack mode, 1: queue mode
+ *
+ * Description: glob_mode: 0: stack mode, 1: queue mode
  *
  * Return: void
  */
@@ -33,7 +34,6 @@ int main(int ac, char **argv)
 	stack_t *stack;
 
 	init_stack(&stack);
-
 	if (ac == 1 || ac > 2)
 	{
 		dprintf(2, "%s\n", "USAGE: monty file");
@@ -62,9 +62,7 @@ int main(int ac, char **argv)
 		}
 		free(av);
 	}
-
 	fclose(file);
 	free_stack(&stack);
-
 	return (0);
 }

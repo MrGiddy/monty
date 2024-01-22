@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * stack - Switches to stack mode
+ * _stack - Switches to stack mode
  * @stack: Pointer to a pointer to first node of a stack_t doubly linked list
  * @line_no: The line number containing the stack opcode
  *
